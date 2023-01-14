@@ -48,16 +48,16 @@ def find_logs_date(
     date_start: datetime.date,
     date_end: datetime.date,
 ) -> list:
-    res = []
+    logs_by_date = []
 
     for log_file in logs_in_dir:
         log_name, _ = os.path.splitext(log_file)
         log_name_to_date = convert_string_to_date(log_name)
 
         if log_name_to_date and date_start <= log_name_to_date <= date_end:
-            res.append(log_file)
+            logs_by_date.append(log_file)
 
-    return res
+    return logs_by_date
 
 
 def find_unique_lines(logs_in_dir: list) -> Set[str]:
